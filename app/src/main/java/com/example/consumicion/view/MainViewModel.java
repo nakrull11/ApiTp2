@@ -24,8 +24,8 @@ public class MainViewModel extends ViewModel {
         return lista;
     }
 
-    public void buscarVm(String prov){
-        Call<Resultado> datos = ApiClient.getInterfaceApi().leer(prov);
+    public void buscarVm(){
+        Call<Resultado> datos = ApiClient.getInterfaceApi().leer();
         datos.enqueue(new Callback<Resultado>() {
             @Override
             public void onResponse(Call<Resultado> call, Response<Resultado> response) {

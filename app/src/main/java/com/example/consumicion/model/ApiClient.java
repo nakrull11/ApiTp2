@@ -26,8 +26,7 @@ public class ApiClient {
 
 
     public interface ApiInterface{
-        String prov="74";
-        @GET("municipios")
-        Call<Resultado> leer(@Query("provincia")String prov);
+        @GET("provincias")
+        Call<Resultado> leer();
     }
 }

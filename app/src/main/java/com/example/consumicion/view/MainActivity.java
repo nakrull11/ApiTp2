@@ -13,7 +13,8 @@ import com.example.consumicion.R;
 
 public class MainActivity extends AppCompatActivity  {
     private MainViewModel mainViewModel;
-    private TextView textView;
+    private TextView tvNombreProv;
+    private TextView tvIdProv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +27,18 @@ public class MainActivity extends AppCompatActivity  {
 
 
     public void mostrar(View view){
-        mainViewModel.buscarVm("74");
+        mainViewModel.buscarVm();
     }
 
     public void inicializar(){
-        textView = findViewById(R.id.tvMunicipio);
+        tvNombreProv = findViewById(R.id.tvNombreProvincia);
+        tvIdProv = findViewById(R.id.tvIdProvincia);
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        mainViewModel.getLista().observe(this, new Observer<String>() {
+        /*mainViewModel.getLista().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 textView.setText(s);
             }
-        });
+        })*/;
     }
 }
