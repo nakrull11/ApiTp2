@@ -20,8 +20,8 @@ public class ListaAdapter extends ArrayAdapter<Provincia> {
     private Context context;
     private List<Provincia> lista;
     private LayoutInflater li;
-    public ListaAdapter(@NonNull Context context, int resource, @NonNull List<String> objects, LayoutInflater li) {
-        super(context, objects, resource);
+    public ListaAdapter(@NonNull Context context, int resource, @NonNull List<Provincia> objects, LayoutInflater li) {
+        super(context, resource, objects);
         this.context = context;
         this.lista = objects;
         this.li = li;
