@@ -39,10 +39,10 @@ public class ListaAdapter extends ArrayAdapter<Provincia> {
         }
         Provincia provincia = lista.get(position);
 
-
         TextView nombreProvincia = itemView.findViewById(R.id.tvNombreProvincia);
 
         TextView idProvincia = itemView.findViewById(R.id.tvIdProvincia);
+
         idProvincia.setText(provincia.getId()+"");
 
         return itemView;

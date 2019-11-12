@@ -1,5 +1,7 @@
 package com.example.consumicion.model;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -27,6 +29,6 @@ public class ApiClient {
 
     public interface ApiInterface{
         @GET("provincias")
-        Call<Resultado> leer();
+        Call<List<Provincia>> leer();
     }
 }
