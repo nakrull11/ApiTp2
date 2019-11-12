@@ -13,12 +13,14 @@ import android.widget.TextView;
 
 import com.example.consumicion.R;
 import com.example.consumicion.model.Provincia;
+import com.example.consumicion.model.Provincias;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
     private MainViewModel mainViewModel;
-    private ArrayList<Provincia> lista;
+    private List<Provincias> lista;
     private TextView tvNombreProv;
     private TextView tvIdProv;
 
@@ -37,16 +39,14 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     public void inicializar(){
-        tvNombreProv = findViewById(R.id.tvNombreProvincia);
-        tvIdProv = findViewById(R.id.tvIdProvincia);
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        mainViewModel.getLista().observe(this, new Observer<String>() {
+        mainViewModel.getLista().observe(this, new Observer<List<Provincias>>() {
             @Override
-            public void onChanged(String s) {
+            public void onChanged(List<Provincias> provincias) {
+                lista = provincias;
                 ArrayAdapter<Provincia> adapter = new ListaAdapter(getApplicationContext(),R.layout.item,lista,getLayoutInflater());
                 ListView lv = findViewById(R.id.miLista);
                 lv.setAdapter(adapter);
-
             }
         });
     }

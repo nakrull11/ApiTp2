@@ -4,6 +4,7 @@ public class Provincia {
 
     private String id;
     private String nombre;
+    private Centroide centroide;
 
     public Provincia(String id, String nombre) {
         this.id = id;

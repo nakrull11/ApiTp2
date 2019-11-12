@@ -13,15 +13,16 @@ import androidx.annotation.Nullable;
 
 import com.example.consumicion.R;
 import com.example.consumicion.model.Provincia;
+import com.example.consumicion.model.Provincias;
 
 import java.util.List;
 
 public class ListaAdapter extends ArrayAdapter<Provincia> {
     private Context context;
-    private List<Provincia> lista;
+    private List<Provincias> lista;
     private LayoutInflater li;
-    public ListaAdapter(@NonNull Context context, int resource, @NonNull List<Provincia> objects, LayoutInflater li) {
-        super(context, resource, objects);
+    public ListaAdapter(@NonNull Context context, int resource, @NonNull List<Provincias> objects, LayoutInflater li) {
+        super(context, resource);
         this.context = context;
         this.lista = objects;
         this.li = li;
@@ -37,13 +38,15 @@ public class ListaAdapter extends ArrayAdapter<Provincia> {
             itemView = li.inflate(R.layout.item,parent,false);
 
         }
-        Provincia provincia = lista.get(position);
+        Provincias provincia = lista.get(position);
 
         TextView nombreProvincia = itemView.findViewById(R.id.tvNombreProvincia);
 
+        nombreProvincia.setText(provincia.getProvincias().get(position).getNombre());
+
         TextView idProvincia = itemView.findViewById(R.id.tvIdProvincia);
 
-        idProvincia.setText(provincia.getId()+"");
+        idProvincia.setText(provincia.getProvincias().get(position).getId());
 
         return itemView;
     }

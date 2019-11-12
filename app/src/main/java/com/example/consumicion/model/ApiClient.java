@@ -1,5 +1,7 @@
 package com.example.consumicion.model;
 
+import android.util.Log;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -21,6 +23,7 @@ public class ApiClient {
                 .build();
 
         interfaceApi = retrofit.create(ApiInterface.class);
+        Log.d("pasando por call","call");
         return  interfaceApi;
     }
 
@@ -29,6 +32,7 @@ public class ApiClient {
 
     public interface ApiInterface{
         @GET("provincias")
-        Call<List<Provincia>> leer();
+        Call<List<Provincias>> leer();
+
     }
 }
