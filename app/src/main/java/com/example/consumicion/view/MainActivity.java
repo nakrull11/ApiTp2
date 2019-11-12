@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity  {
         inicializar();
     }
 
+    //Probando Pull
+
+
     public void mostrar(View view){
         mainViewModel.buscarVm("74");
     }
