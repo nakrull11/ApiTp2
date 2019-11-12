@@ -19,11 +19,11 @@ import retrofit2.Response;
 
 public class MainViewModel extends ViewModel {
 
-    private MutableLiveData<List<Provincias>> listaNombre;
+    private MutableLiveData<Provincias> listaNombre;
 
-    private List<Provincias> provincias;
+    private Provincias provincias;
 
-    public LiveData<List<Provincias>> getLista()
+    public LiveData<Provincias> getLista()
     {
         if(listaNombre==null){
             listaNombre = new MutableLiveData<>();
@@ -33,18 +33,18 @@ public class MainViewModel extends ViewModel {
 
 
     public void buscarVm(){
-        Call<List<Provincias>> datos = ApiClient.getInterfaceApi().leer();
+        Call<Provincias> datos = ApiClient.getInterfaceApi().leer();
         Log.d("datos",datos.toString());
-        datos.enqueue(new Callback<List<Provincias>>() {
+        datos.enqueue(new Callback<Provincias>() {
             @Override
-            public void onResponse(Call<List<Provincias>> call, Response<List<Provincias>> response) {
+            public void onResponse(Call<Provincias> call, Response<Provincias> response) {
                 if(response.isSuccessful()){
 
                     provincias = response.body();
                     StringBuffer cadena = new StringBuffer();
 
-                    for(int i=0;i<provincias.size();i++) {
-                        cadena.append(provincias.get(i).getProvincias() + "\n");
+                    for (Provincia p : provincias.getProvincias()) {
+                        cadena.append(p.getNombre());
                     }
 
                     listaNombre.postValue(provincias);
@@ -52,7 +52,7 @@ public class MainViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<List<Provincias>> call, Throwable t) {
+            public void onFailure(Call<Provincias> call, Throwable t) {
                 listaNombre.postValue(null);
             }
         });

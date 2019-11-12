@@ -19,12 +19,13 @@ import java.util.List;
 
 public class ListaAdapter extends ArrayAdapter<Provincia> {
     private Context context;
-    private List<Provincias> lista;
+    private Provincias lista;
+    private List<Provincia> listaProvincia;
     private LayoutInflater li;
-    public ListaAdapter(@NonNull Context context, int resource, @NonNull List<Provincias> objects, LayoutInflater li) {
-        super(context, resource);
+    public ListaAdapter(@NonNull Context context, int resource, @NonNull List<Provincia> objects, LayoutInflater li) {
+        super(context, resource,objects);
         this.context = context;
-        this.lista = objects;
+        this.listaProvincia = objects;
         this.li = li;
     }
 
@@ -38,15 +39,15 @@ public class ListaAdapter extends ArrayAdapter<Provincia> {
             itemView = li.inflate(R.layout.item,parent,false);
 
         }
-        Provincias provincia = lista.get(position);
+        Provincia provincia = listaProvincia.get(position);
 
         TextView nombreProvincia = itemView.findViewById(R.id.tvNombreProvincia);
 
-        nombreProvincia.setText(provincia.getProvincias().get(position).getNombre());
+        nombreProvincia.setText(provincia.getNombre());
 
         TextView idProvincia = itemView.findViewById(R.id.tvIdProvincia);
 
-        idProvincia.setText(provincia.getProvincias().get(position).getId());
+        idProvincia.setText(provincia.getId());
 
         return itemView;
     }

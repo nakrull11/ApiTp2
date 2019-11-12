@@ -32,7 +32,7 @@ public class ApiClient {
 
     public interface ApiInterface{
         @GET("provincias")
-        Call<List<Provincias>> leer();
+        Call<Provincias> leer();
 
     }
 }

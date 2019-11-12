@@ -20,7 +20,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
     private MainViewModel mainViewModel;
-    private List<Provincias> lista;
+    private Provincias lista;
+    private List<Provincia> listaProv;
     private TextView tvNombreProv;
     private TextView tvIdProv;
 
@@ -29,22 +30,23 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inicializar();
+        mostrar();
     }
 
     //Probando Pull
 
 
-    public void mostrar(View view){
+    public void mostrar(){
         mainViewModel.buscarVm();
     }
 
     public void inicializar(){
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        mainViewModel.getLista().observe(this, new Observer<List<Provincias>>() {
+        mainViewModel.getLista().observe(this, new Observer<Provincias>() {
             @Override
-            public void onChanged(List<Provincias> provincias) {
-                lista = provincias;
-                ArrayAdapter<Provincia> adapter = new ListaAdapter(getApplicationContext(),R.layout.item,lista,getLayoutInflater());
+            public void onChanged(Provincias provincias) {
+                listaProv = provincias.getProvincias();
+                ArrayAdapter<Provincia> adapter = new ListaAdapter(getApplicationContext(),R.layout.item,listaProv,getLayoutInflater());
                 ListView lv = findViewById(R.id.miLista);
                 lv.setAdapter(adapter);
             }
